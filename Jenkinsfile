@@ -1,10 +1,8 @@
-def output = 'From Jenkins'
+def output = 'Maven'
 def x = '1010'
 pipeline {
-    agent {
-        label 'slave-node'
-    }
-
+    agent any
+    
     stages {
         stage('checkout') {
             steps {
@@ -40,9 +38,6 @@ pipeline {
           steps {
             sh 'mvn package'
           }
-        }
-        stage ('CleanUP') {
-         cleanWs() 
         }
     }
 }
